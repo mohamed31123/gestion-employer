@@ -3,6 +3,9 @@ package com.school.gestionemploye.Entity;
 
 import com.school.gestionemploye.enums.Role;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
@@ -10,7 +13,11 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id ;
+    @NotEmpty(message = "username should is required")
     private String username ;
+    @NotEmpty(message = "password is required")
+    @Size(min = 8 ,  max = 50 , message = "password should contain at least 8 caracters ")
+    private String password ;
 
     @Enumerated(EnumType.STRING)
     private Role role;
