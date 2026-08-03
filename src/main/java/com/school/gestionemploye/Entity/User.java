@@ -15,6 +15,8 @@ public class User {
     private Long id ;
     @NotEmpty(message = "username should is required")
     private String username ;
+    @Column(name = "email")
+    private String email;
     @NotEmpty(message = "password is required")
     @Size(min = 8 ,  max = 50 , message = "password should contain at least 8 caracters ")
     private String password ;
