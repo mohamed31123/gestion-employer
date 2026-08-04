@@ -36,6 +36,13 @@ public class JwtService {
                 .signWith(getSigningKey())
                 .compact();
     }
+    public boolean isTokenValid(String token, UserDetails userDetails) {
+        String username = extractUsername(token);
+
+        return username.equals(userDetails.getUsername())
+                && !isTokenExpired(token);
+    }
+
 
 
 }
